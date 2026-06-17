@@ -72,58 +72,40 @@
   .sec-head h2{font-size:clamp(1.5rem,3.6vw,2.05rem); margin:0;}
   .sec-head .sub{color:var(--ink-soft); font-size:1rem; margin-top:12px;}
 
-  /* cards */
+  /* cards（筆刷區沿用） */
   .card{background:var(--paper); border:1px solid var(--sand-line); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; text-decoration:none; transition:transform .25s ease, box-shadow .25s ease;}
   .card:hover{transform:translateY(-3px); box-shadow:0 18px 38px -22px rgba(67,53,43,.4);}
   .c-img{overflow:hidden; background:var(--sand);}
   .c-img img{width:100%;height:100%;object-fit:cover;display:block;}
   .c-body{padding:22px 24px 24px; display:flex; flex-direction:column; gap:9px; flex:1;}
-  .stars{color:var(--terra-deep); font-size:13.5px; letter-spacing:.04em;}
-  .stars b{font-weight:600; margin-right:5px;}
-  .stars span{color:var(--ink-faint); font-weight:300;}
   .tag{font-size:.74rem; letter-spacing:.16em; color:var(--terra); font-weight:500;}
   .c-title{font-family:"Noto Serif TC"; color:var(--ink); font-weight:600; font-size:1.12rem; line-height:1.5; margin:0;}
-  .c-desc{color:var(--ink-soft); font-weight:300; font-size:.94rem; line-height:1.8; margin:0;}
-  .priceblock{margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; padding-top:8px;}
-  .price .lab{font-size:.78rem; color:var(--ink-faint); font-weight:300;}
   .price .now{font-family:"Noto Serif TC"; font-size:1.5rem; color:var(--terra-deep); line-height:1.1;}
-  .price .was{font-size:.82rem; color:var(--ink-faint); text-decoration:line-through; margin-left:6px;}
-  .stu{font-size:.82rem; color:var(--ink-faint); white-space:nowrap;}
   .more{margin-top:auto; padding-top:10px; font-size:.9rem; letter-spacing:.08em; color:var(--terra-deep); font-weight:500;}
   .card:hover .more{color:var(--terra);}
 
-  /* course section */
-  .courses{background:var(--paper-2);}
-
-  /* featured card (21day) */
-  .featured-card{
-    flex-direction:row; margin-bottom:26px;
-  }
-  .featured-card .fc-img{
-    width:46%; flex-shrink:0; overflow:hidden; background:var(--sand);
-  }
-  .featured-card .fc-img img{width:100%;height:100%;object-fit:cover;display:block;}
-  .featured-card .fc-body{
-    padding:36px 40px; display:flex; flex-direction:column; gap:12px; flex:1; justify-content:center;
-  }
-  .featured-card .c-title{font-size:1.35rem;}
-  .featured-card .c-desc{font-size:1rem;}
+  /* ===== 交錯式課程排版 ===== */
+  .altcourses{padding:0;}
+  .altcourses .sec-head{padding:88px 26px 6px;}
+  @media(max-width:680px){ .altcourses .sec-head{padding:60px 26px 6px;} }
+  .crow{width:100%;}
+  .crow:nth-of-type(odd){background:var(--paper);}
+  .crow:nth-of-type(even){background:var(--paper-2);}
+  .crow .inner{max-width:var(--maxw); margin:0 auto; padding:58px 26px; display:flex; align-items:center; gap:54px;}
+  .crow:nth-of-type(even) .inner{flex-direction:row-reverse;}
+  .crow .ci{width:46%; flex-shrink:0; border-radius:18px; overflow:hidden; background:var(--sand); box-shadow:0 18px 40px -24px rgba(67,53,43,.4); align-self:center;}
+  .crow .ci img{width:100%; height:auto; display:block;}
+  .crow .ct{flex:1; min-width:0;}
+  .crow .ct .tag{display:block; margin-bottom:12px;}
+  .crow .ct h3{font-family:"Noto Serif TC"; color:var(--ink); font-weight:600; font-size:clamp(1.4rem,3vw,1.95rem); line-height:1.5; margin:0 0 18px;}
+  .crow .ct p{margin:0 0 24px; font-size:1.02rem; color:var(--ink-soft); line-height:1.9;}
+  .crow .ct .meta{font-size:.88rem; color:var(--ink-faint); margin:0 0 22px; letter-spacing:.04em;}
+  .crow .ct .meta b{font-family:"Noto Serif TC"; color:var(--terra-deep); font-size:1.25rem; font-weight:600;}
+  .crow .ct .was{text-decoration:line-through; margin-left:6px;}
+  .tag-soon{display:inline-block; font-size:.74rem; letter-spacing:.16em; color:var(--ink-faint); border:1px solid var(--sand-line); border-radius:999px; padding:3px 12px;}
   @media(max-width:760px){
-    .featured-card{flex-direction:column;}
-    .featured-card .fc-img{width:100%; aspect-ratio:16/9;}
-    .featured-card .fc-body{padding:24px;}
-    .featured-card .c-title{font-size:1.15rem;}
-  }
-
-  /* 2-col grid */
-  .cgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
-  .cgrid .c-img{aspect-ratio:1200/628;}
-  .soon{cursor:default;}
-  .soon .c-img{aspect-ratio:1200/628; background:linear-gradient(135deg,#F6ECE3,#EFE0D2); display:flex; align-items:center; justify-content:center;}
-  .soon .c-img .ph{font-family:"Noto Serif TC"; color:var(--terra); font-size:1.3rem; letter-spacing:.12em;}
-  .tag-soon{font-size:.74rem; letter-spacing:.16em; color:var(--ink-faint); border:1px solid var(--sand-line); border-radius:999px; padding:3px 12px; align-self:flex-start;}
-  @media(max-width:680px){
-    .cgrid{grid-template-columns:1fr;}
+    .crow .inner, .crow:nth-of-type(even) .inner{flex-direction:column; gap:26px; padding:46px 26px;}
+    .crow .ci{width:100%;}
   }
 
   /* trust section */
@@ -200,88 +182,84 @@
   </div>
 </section>
 
-<!-- ============ 線上課程 ============ -->
-<section class="courses" id="courses">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="zh-eyebrow">Online Courses</p>
-      <h2>繪畫線上課程</h2>
-      <p class="sub">皆為預錄影片 ‧ 購買後永久無限次數觀看</p>
-    </div>
-
-    <!-- 精選課程：21天生活繪畫跟練課 -->
-    <a class="card featured-card reveal" href="https://sat.cool/course/83" target="_blank" rel="noopener">
-      <div class="fc-img">
-        <img src="https://warehouse.kaik.network/course/cover_photo/e18f4dd0-6efb-43bb-b6ca-d6bc58f4d310/c970b556-ce74-4ba4-adb0-bf8e74f6ac9f.jpg" alt="Procreate 21天生活繪畫跟練課">
-      </div>
-      <div class="c-body fc-body">
-        <span class="tag">精選課程 ‧ 知識衛星平台</span>
-        <h3 class="c-title">【知識衛星 × KIMUART】<br>Procreate 21 天生活繪畫跟練課</h3>
-        <p class="c-desc">每天三十分鐘，從簡到繁，完成約十五張作品。陪你把畫畫變成一種生活習慣。</p>
-        <span class="more">查看課程 →</span>
-      </div>
-    </a>
-
-    <!-- 2欄：新手攻略 + 人體速寫 -->
-    <div class="cgrid">
-
-      <a class="card reveal" href="https://course.kimu.art/courses/noviceclass">
-        <div class="c-img"><img src="https://warehouse.kaik.network/course/cover_photo/97e2c67e-af96-4f7f-bc2a-a5c54821db38/ef904f9a-b465-4913-a6c9-1934a87e7b1e.jpg" alt="Procreate新手攻略：從0開始繪製療癒風頭像"></div>
-        <div class="c-body">
-          <div class="stars"><b>5.0</b>★★★★★ <span>(50)</span></div>
-          <h3 class="c-title">Procreate 新手攻略：從 0 開始繪製療癒風頭像</h3>
-          <div class="priceblock">
-            <div class="price"><div class="lab">優惠價</div><div class="now">NT$3,980<span class="was">NT$5,980</span></div></div>
-            <div class="stu">學員 888</div>
-          </div>
-          <span class="more">查看課程 →</span>
-        </div>
-      </a>
-
-      <a class="card reveal" href="https://course.kimu.art/courses/30dfigure">
-        <div class="c-img"><img src="https://warehouse.kaik.network/course/cover_photo/90123e69-cd15-4fdc-a014-a5982cae8bca/1d471041-f902-4480-9f8f-9dbc1508ca17.png" alt="KIMU陪你一起畫：30天人體速寫"></div>
-        <div class="c-body">
-          <div class="stars"><b>5.0</b>★★★★★ <span>(15)</span></div>
-          <h3 class="c-title">KIMU 陪你一起畫：30 天人體速寫</h3>
-          <div class="priceblock">
-            <div class="price"><div class="lab">優惠價</div><div class="now">NT$999<span class="was">NT$1,200</span></div></div>
-            <div class="stu">學員 569</div>
-          </div>
-          <span class="more">查看課程 →</span>
-        </div>
-      </a>
-
-    </div>
-
-    <!-- 即將上線 -->
-    <div class="cgrid" style="margin-top:26px; grid-template-columns:1fr 1fr;">
-      <div class="card soon reveal">
-        <div class="c-img"><img src="https://s.teachifycdn.com/image/width=2048,quality=80/school/images/ab7b3311-da58-4f1f-8baa-4a39583d1196.jpg" alt="輕水彩旅行速寫"></div>
-        <div class="c-body">
-          <span class="tag-soon">即將上線 ‧ 七月</span>
-          <h3 class="c-title">輕水彩旅行速寫</h3>
-          <p class="c-desc">用輕盈的水彩，記錄旅途中遇見的光。敬請期待。</p>
-        </div>
-      </div>
-      <div></div><!-- 佔位，讓 soon 卡維持半寬 -->
-    </div>
-
-  </div>
-</section>
-
 <!-- ============ 信任感區 ============ -->
 <section class="trust">
   <div class="wrap">
     <div class="reveal" style="text-align:center;">
-      <div class="trust-num">13,000+</div>
+      <p class="zh-eyebrow" style="text-align:center;">已陪伴</p>
+      <div class="trust-num"><span class="countup" data-target="13000">0</span>+</div>
       <div class="trust-label">位學員陪伴開始畫畫</div>
       <div class="trust-body">
-        <p>從完全不會使用 Procreate 的新手，到重新找回創作熱情的插畫愛好者，KIMUART 的課程陪伴許多人從「我不會畫」開始，慢慢畫出自己的作品。</p>
-        <p>你不需要一次變得很厲害。只要願意開始，畫畫就會一點一點成為你生活裡溫柔的陪伴。</p>
+        <p>從完全不會使用 Procreate 的新手，到重新找回創作熱情的插畫愛好者，KIMUART 的課程陪伴許多人從「我不會畫」開始，慢慢畫出自己的作品，找回創作的自信。</p>
+        <p>你不需要一次變得很厲害。<br>只要願意開始，畫畫就會一點一點成為你生活裡溫柔的陪伴。</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ============ 線上課程（交錯排版） ============ -->
+<section class="altcourses" id="courses">
+  <div class="sec-head reveal">
+    <p class="zh-eyebrow">Online Courses</p>
+    <h2>繪畫線上課程</h2>
+    <p class="sub">皆為預錄影片 ‧ 購買後永久無限次數觀看</p>
+  </div>
+
+  <!-- Row 1：21天生活繪畫跟練課（左圖右文） -->
+  <div class="crow reveal">
+    <div class="inner">
+      <div class="ci"><img src="https://warehouse.kaik.network/course/cover_photo/e18f4dd0-6efb-43bb-b6ca-d6bc58f4d310/c970b556-ce74-4ba4-adb0-bf8e74f6ac9f.jpg" alt="Procreate 21天生活繪畫跟練課"></div>
+      <div class="ct">
+        <span class="tag">精選課程 ‧ 知識衛星平台</span>
+        <h3>【知識衛星 × KIMUART】<br>Procreate 21 天生活繪畫跟練課</h3>
+        <p>每天三十分鐘，從簡到繁，在 21 天裡完成約 15 張作品，內容涵蓋美食、萌寵、花卉、角色、旅遊速寫⋯⋯陪你把畫畫變成一種生活習慣。</p>
+        <a class="btn" href="https://sat.cool/course/83" target="_blank" rel="noopener"><span class="dot"></span>瞭解更多</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2：療癒風頭像（左文右圖） -->
+  <div class="crow reveal">
+    <div class="inner">
+      <div class="ci"><img src="https://warehouse.kaik.network/course/cover_photo/97e2c67e-af96-4f7f-bc2a-a5c54821db38/ef904f9a-b465-4913-a6c9-1934a87e7b1e.jpg" alt="Procreate新手攻略：從0開始繪製療癒風頭像"></div>
+      <div class="ct">
+        <span class="tag">新手入門 ‧ 5.0★（50 則評價）</span>
+        <h3>Procreate 新手攻略<br>從 0 開始繪製療癒風頭像</h3>
+        <p>以頭像教學為主，著重在人臉頭像的繪製，包含女生頭像、男生頭像與寵物頭像，幫助你畫出自己的第一個療癒風 Q 版人像。</p>
+        <p class="meta">優惠價 <b>NT$3,980</b><span class="was">NT$5,980</span> ‧ 學員 888</p>
+        <a class="btn" href="https://course.kimu.art/courses/noviceclass"><span class="dot"></span>瞭解更多</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3：30天人體速寫（左圖右文） -->
+  <div class="crow reveal">
+    <div class="inner">
+      <div class="ci"><img src="https://warehouse.kaik.network/course/cover_photo/90123e69-cd15-4fdc-a014-a5982cae8bca/1d471041-f902-4480-9f8f-9dbc1508ca17.png" alt="KIMU陪你一起畫：30天人體速寫"></div>
+      <div class="ct">
+        <span class="tag">進階練習 ‧ 5.0★（15 則評價）</span>
+        <h3>KIMU 陪你一起畫<br>30 天人體速寫</h3>
+        <p>用 30 天的時間，陪你一起練習人體速寫。從觀察到下筆，一天一點，慢慢把「畫人」這件事變得不再害怕。</p>
+        <p class="meta">優惠價 <b>NT$999</b><span class="was">NT$1,200</span> ‧ 學員 569</p>
+        <a class="btn" href="https://course.kimu.art/courses/30dfigure"><span class="dot"></span>瞭解更多</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4：即將上線（左文右圖） -->
+  <div class="crow reveal">
+    <div class="inner">
+      <div class="ci"><img src="https://s.teachifycdn.com/image/width=2048,quality=80/school/images/ab7b3311-da58-4f1f-8baa-4a39583d1196.jpg" alt="輕水彩旅行速寫"></div>
+      <div class="ct">
+        <span class="tag-soon">即將上線 ‧ 七月</span>
+        <h3 style="margin-top:16px;">輕水彩旅行速寫</h3>
+        <p>用輕盈的水彩，記錄旅途中遇見的光。把每一段旅程，畫成可以收藏的小小風景。敬請期待。</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 
 <!-- ============ 筆刷與素材 ============ -->
 <section class="brushes">
@@ -379,11 +357,9 @@
       </p>
       <p style="font-size:.95rem; color:var(--ink-soft); margin:0 0 32px;">選一門適合你的課，讓畫畫重新走進生活裡。</p>
       <div class="btn-row">
-        <a class="btn" href="#courses"><span class="dot"></span>查看所有繪畫課程</a>
-        <!-- TODO：請把 # 換成免費資源的實際連結 -->
-        <a class="btn-ghost" href="https://course.kimu.art/digital-downloads/categories/live">領取免費資源</a>
+        <a class="btn" href="https://course.kimu.art/free"><span class="dot"></span>領取免費繪畫資源</a>
       </div>
-      <p class="free-hint">不知道從哪邊開始嗎？也可以先看看免費的新手教學喔 ↑</p>
+      <p class="free-hint">不知道從哪邊開始嗎？也可以先從免費資源開始畫畫看 ↑</p>
     </div>
   </div>
 </section>
@@ -402,6 +378,33 @@
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* 數字 count-up 動畫 */
+  function runCount(el){
+    var target = parseInt(el.getAttribute('data-target'),10) || 0;
+    var dur = 1600, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString('en-US');
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('en-US');
+    }
+    requestAnimationFrame(step);
+  }
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var countIO = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var el = e.target;
+        if(reduceMotion){ el.textContent = (parseInt(el.getAttribute('data-target'),10)||0).toLocaleString('en-US'); }
+        else { runCount(el); }
+        countIO.unobserve(el);
+      }
+    });
+  },{threshold:.6});
+  document.querySelectorAll('.countup').forEach(function(el){ countIO.observe(el); });
 </script>
 </body>
 </html>
